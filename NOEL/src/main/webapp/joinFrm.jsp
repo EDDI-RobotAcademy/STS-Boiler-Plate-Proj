@@ -15,10 +15,10 @@
 <jsp:include page="/WEB-INF/views/layouts/header.jsp" />
     <div class="header"></div>
     <div class="contents">
-        <form name="checkIdFrm" action="/checkId">
+        <form name="checkIdFrm" action="/checkId.do">
 			<input type="hidden" name="checkId">
 		</form>
-        <form action="/join" method="post">
+        <form action="/join.do" method="post">
         <div class="membership-form">
             <div class="form-write">
                 <h4>회원정보</h4>
@@ -26,9 +26,10 @@
                         <li>
                             <span class="tit">이름</span>
                             <div class="cnt">
-                                <div class="Jinput01">
-                                    <label class="label" for="userName">한글로 2~5자리 이내로 입력해주세요.</label>
-                                    <input type="text" id="userName" name="userName">
+                                <div class="input01">
+                                    <label class="label" for="memberName">한글로 2~5자리 이내로 입력해주세요.</label>
+                                    <input type="text" id="memberName" name="memberName">
+                                    <img class="icon1" src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/325/flushed-face_1f633.png">
                                 </div>
                                 <p class="text-note"></p>
                             </div>
@@ -36,9 +37,10 @@
                         <li>
                             <span class="tit">아이디</span>
                             <div class="cnt">
-                                <div class="Jinput01" id="Jinput01">
-                                    <label class="label" for="userId">영문 4~20자리 이내로 입력해주세요.</label>
-                                    <input type="text" id="userId" name="userId" >
+                                <div class="input01" id="input01">
+                                    <label class="label" for="memberId">영문 4~20자리 이내로 입력해주세요.</label>
+                                    <input type="text" id="memberId" name="memberId">
+                                    <img class="icon2" src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/325/flushed-face_1f633.png">
                                 </div>
                                 <p class="text-note"></p>
                                 <button type="button" id="idChkBtn">중복체크</button>
@@ -47,9 +49,10 @@
                         <li>
                             <span class="tit">비밀번호</span>
                             <div class="cnt">
-                                <div class="Jinput01">
-                                    <label class="label" for="userPw">대/소문자와 숫자를 포함한 최소 8자리를 입력해주세요.(특수문자 제외)</label>
-                                    <input type="password" id="userPw" name="userPw">
+                                <div class="input01">
+                                    <label class="label" for="memberPw">대/소문자와 숫자를 포함한 최소 8자리를 입력해주세요.(특수문자 제외)</label>
+                                    <input type="password" id="memberPw" name="memberPw">
+                                    <img class="icon3" src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/325/flushed-face_1f633.png">
                                 </div>
                                 <p class="text-note"></p>
                             </div>
@@ -57,53 +60,13 @@
                         <li>
                             <span class="tit">비밀번호 확인</span>
                             <div class="cnt">
-                                <div class="Jinput01">
-                                    <label class="label" for="userPw2">비밀번호를 한 번 더 입력해주세요.</label>
-                                    <input type="password" id="userPw2" name="userPw2">
+                                <div class="input01">
+                                    <label class="label" for="memberPw2">비밀번호를 한 번 더 입력해주세요.</label>
+                                    <input type="password" id="memberPw2" name="memberPw2">
                                 </div>
                                 <p class="text-note"></p>
                             </div>
                         </li>
-                        
-                        <li>
-                            <span class="tit">생년월일</span>
-                            <div class="cnt">
-                            	<div>
-                                    <div class="box04" style = "margin-left:0px; margin-right: 10px; width: 240px;">
-                                        <label class="label" for="birth_year">연도를 입력해주세요(숫자만 4자)</label>
-                                        <input type="text" id="birth_year" name="birth_year">
-                                       	<input type="hidden" id="userBirth" name="userBirth">
-                                    </div>
-                                        <div class="selBox01 box01"  >
-                                            <select id="birth_month" name="birth_month" >
-                                                <option value="">월</option>
-                                                <option value="01">1</option>
-                                                <option value="02">2</option>
-                                                <option value="03">3</option>
-                                                <option value="04">4</option>
-                                                <option value="05">5</option>
-                                                <option value="06">6</option>
-                                                <option value="07">7</option>
-                                                <option value="08">8</option>
-                                                <option value="09">9</option>
-                                                <option value="10">10</option>
-                                                <option value="11">11</option>
-                                                <option value="12">12</option>
-                                            </select>
-                                    </div>
-                                    
-                                     <div class="box04" style = "margin-left:10px; margin-right: 0px; width: 230px;">
-                                        <label class="label" for="birth_day">일을 입력해주세요(숫자만 2자)</label>
-                                        <input type="text" id="birth_day" name="birth_day">
-                                         
-                                    </div>
-                                    
-                                    <br>
-                                    <p class="text-note"></p>
-                            	</div>
-                            </div>
-                        </li>
-                        
                         <li>
                             <span class="tit">휴대폰 인증</span>
                             <div class="cnt">
@@ -118,9 +81,9 @@
                                         </div>
                                     </div>
                                     <div class="box02">
-                                        <label class="label" for="memberPhone1">전화번호를 '-' 빼고 입력해주세요.</label>
+                                        <label class="label" for="memberPhone1">전화번호를 입력해주세요.</label>
                                         <input type="text" id="memberPhone1" name="memberPhone1">
-                                        <input type="hidden" id="memberPhone" name="userTel">
+                                        <input type="hidden" id="memberPhone" name="memberPhone">
                                     </div>
                                     <button type="button" class="phoneChkSendBtn">인증번호 발송</button>
                                     <div class="box03">
@@ -173,8 +136,8 @@
                 <input type="submit" id="joinBtn" value="회원가입">
             </div>
         </form>
-        <form name="contentModal1" action="/contentModal1"></form>
-        <form name="contentModal2" action="/contentModal2"></form>
+        <form name="contentModal1" action="/contentModal1.do"></form>
+        <form name="contentModal2" action="/contentModal2.do"></form>
     </div>
 	<jsp:include page="/WEB-INF/views/layouts/footer.jsp" />
 	
@@ -191,18 +154,19 @@
 			$("[name=contentModal2]").submit();
 		});
 		
+		
 	
 		var idFlag = 0;
 		var phoneFlag = 0;
 		
 		/*아이디 중복체크*/
 		$("#idChkBtn").on("click",function(){
-			const userId = $("#userId").val();
-			if(userId == ""){
+			const memberId = $("#memberId").val();
+			if(memberId == ""){
 				alert("아이디를 입력하세요");
 				return;
 			}
-			$("[name=checkId]").val(userId);
+			$("[name=checkId]").val(memberId);
 			const popup = window.open("","checkId","left=600px, top=300px, width=500px, height=200px, menubar=no, status=no, scrollbars=yes");
 			//새창에서 form을 전송하기 위한 연결작업
 			$("[name=checkIdFrm]").attr("target","checkId");
@@ -219,7 +183,7 @@
 			var phone = phone1+phone2;
 			$.ajax({
 				type : "POST",
-				url : "/memberPhoneCheck",
+				url : "/memberPhoneCheck.do",
 				data : {phone : phone},
 				success : function(numStr) {
                     $(".certifyNum2").val(numStr);
@@ -276,9 +240,9 @@
 						$("#authMsg").css("color","red");
 		            }
 		      });
-		$("#userName").on("keyup",function(){
+		$("#memberName").on("keyup",function(){
 			const nameReg = /^[가-힣]{2,5}$/;
-			const name = $("#userName");
+			const name = $("#memberName");
 			nameValue = name.val();
 			const nameComment = name.parent().next();
 			if(nameReg.test(nameValue)){
@@ -288,9 +252,9 @@
 			}
 			
 		});
-		$("#userId").on("keyup",function(){
+		$("#memberId").on("keyup",function(){
 			const idReg = /^[A-Za-z]{1}[A-Za-z0-9]{3,19}$/;
-			const id = $("#userId");
+			const id = $("#memberId");
 			idValue = id.val();
 			const idComment = id.parent().next();
 			if(idReg.test(idValue)){
@@ -299,9 +263,9 @@
 				$(".icon2").attr("src","https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/325/flushed-face_1f633.png");
 			}
 		});
-		$("#userPw").on("keyup",function(){
+		$("#memberPw").on("keyup",function(){
 			const pwReg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
-			const pw = $("#userPw");
+			const pw = $("#memberPw");
 			const pwValue = pw.val();
 			const pwComment = pw.parent().next();
 			if(pwReg.test(pwValue)){
@@ -312,13 +276,10 @@
 		});
 		
 		/*정규표현식 유효성검사*/
-		
-		 
-	
 		$("#joinBtn").on("click",function(event){
 			//이름 유효성 검사
 			const nameReg = /^[가-힣]{2,5}$/;
-			const name = $("#userName");
+			const name = $("#memberName");
 			nameValue = name.val();
 			const nameComment = name.parent().next();
 			if(nameReg.test(nameValue)){
@@ -331,11 +292,12 @@
 			}
 			//아아디 유효성검사
 			const idReg = /^[A-Za-z]{1}[A-Za-z0-9]{3,19}$/;
-			const id = $("#userId");
+			const id = $("#memberId");
 			idValue = id.val();
 			const idComment = id.parent().next();
 			if(idReg.test(idValue)){
 				idComment.text("");
+				
 			}else {
 				idComment.text("* 4~20자리 이내로 입력해주세요.");
 				idComment.css("color","red");
@@ -344,7 +306,7 @@
 			}
 			//비밀번호 유효성 검사
 			const pwReg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
-			const pw = $("#userPw");
+			const pw = $("#memberPw");
 			const pwValue = pw.val();
 			const pwComment = pw.parent().next();
 			if(pwReg.test(pwValue)){
@@ -357,7 +319,7 @@
 			}
 			// 비밀번호 확인 검사
 			const pwVal = pw.val();
-			const pwChk = $("#userPw2");
+			const pwChk = $("#memberPw2");
 			const pwChkVal = pwChk.val();
 			const pwChkComment = pwChk.parent().next();
 			if(pwChkVal == pwVal) {
@@ -368,11 +330,10 @@
 				event.preventDefault();
 			}
 			
-			//핸드폰 확인
 			var phone1 = $("[name=frontNum]").val();
 			var phone2 = $("[name=memberPhone1]").val();
 			var phone = phone1+phone2;
-			$("[name=userTel]").val(phone);
+			$("[name=memberPhone]").val(phone);
 			
 			var allowChked = $("#allChk").is(":checked");
 			if(idFlag == 0 || phoneFlag == 0 || allowChked == false) {
@@ -383,93 +344,58 @@
 				event.preventDefault();
 			}
 			
-			//생년월일 유효성검사
-			const birthReg = /^(19[0-9][0-9]|20\d{2})-(0[0-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/;
-			var birth_year = $("[name=birth_year]").val();
-			var birth_month = $("[name=birth_month]").val();
-			var birth_day = $("[name=birth_day]").val();
-			var birth = birth_year+"-"+birth_month+"-"+birth_day;
-			$("[name=userBirth]").val(birth);
-			
-			 if(!birth_year){
-			      alert("연도를 입력해주세요");
-			    $("#birth_year").focus();
-			    return false;
-			  }
-			  if(!birth_month){
-			      alert("월을 입력해주세요");
-			    $("#birth_month").focus();
-			    return false;
-			  }
-			  if(!birth_day){
-			      alert("일을 입력해주세요");
-			    $("#birth_day").focus();
-			    return false;
-			  }
-			  if(!birthReg.test(birth)){
-			      alert("생년월일을 형식에 맞게 입력해주세요.");
-			    return false;
-			  }
-			
-			
 		});
-		
-	
 		
        
 		
 		
 			
-	const Jinput01 = $(".label").next();
-	Jinput01.on("focus",function(){
-	    const label = $(this).prev();
-	    label.css("display","none");
-	});
-	Jinput01.on("blur",function(){
-	    const label = $(this).prev();
-	    if($(this).val() == ""){
-		    label.css("display","");
-	    }
-	});
+		
+		$("input").on("focus",function(){
+		    const label = $(this).prev();
+		    label.css("display","none");
+		});
+		$("input").on("blur",function(){
+		    const label = $(this).prev();
+		    if($(this).val() == ""){
+			    label.css("display","");
+		    }
+		});
 		$(".phoneChkSendBtn").on("mouseover",function(){
-			$(this).css("background-color","#d15662");
+			$(this).css("background-color","rgb(97, 76, 76)");
 			$(this).css("border","1px solid black");
-			$(this).css("color","rgb(255, 255, 255)");
+			$(this).css("color","#ffc107");
 		})
 		$(".phoneChkSendBtn").on("mouseleave",function(){
 			$(this).css("background-color","");
-			$(this).css("border","");
 			$(this).css("color","");
 		})
         $(".phoneChkBtn").on("mouseover",function(){
-			$(this).css("background-color","#d15662");
+			$(this).css("background-color","rgb(97, 76, 76)");
 			$(this).css("border","1px solid black");
-			$(this).css("color","rgb(255, 255, 255)");
+			$(this).css("color","#ffc107");
 		})
 		$(".phoneChkBtn").on("mouseleave",function(){
 			$(this).css("background-color","");
-			$(this).css("border","");
 			$(this).css("color","");
 		})
 		$("#idChkBtn").on("mouseover",function(){
-			$(this).css("background-color","#d15662");
+			$(this).css("background-color","rgb(97, 76, 76)");
 			$(this).css("border","1px solid black");
-			$(this).css("color","rgb(255, 255, 255)");
+			$(this).css("color","#ffc107");
 		})
 		$("#idChkBtn").on("mouseleave",function(){
 			$(this).css("background-color","");
-			$(this).css("border","");
 			$(this).css("color","");
 		})
 		const joinBtn = $(".joinBtn").children();
 		$("#joinBtn").on("mouseover",function(){
-			$(this).css("background-color","#d15662");
+			$(this).css("background-color","rgb(97, 76, 76)");
 			$(this).css("border","1px solid black");
-			$(this).css("color","rgb(255, 255, 255)");
+			$(this).css("color","#ffc107");
 		})
 		$("#joinBtn").on("mouseleave",function(){
 			joinBtn.css("background-color","");
-			$(this).css("border","");
 			$(this).css("color","");
 		})
 		
