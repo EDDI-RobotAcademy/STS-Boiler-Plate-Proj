@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="marketMapper">
+
+   <select id="reviewList" resultType="marketReviewVO">
+      select
+      prd_review_no as prdReviewno,
+      prd_no as prdNo,
+      prd_review_content as prdReviewcontent,
+      user_id as userId,
+      prd_review_regdate as prdReviewregdate,
+      rating
+      from noel_product_review
+      order by prd_review_regdate desc
+   </select>   
+   
+   <select id="reviewDetail" parameterType="int" resultType="marketReviewVO">
+      select
+      prd_review_no as prdReviewno,
+      prd_no as prdNo,
+      marketer_id as marketerId,
+      rating as rating,
+      prd_review_content as prdReviewcontent,
+      user_id as userId
+      from noel_product_review
+      where prd_review_no = #{prdReviewno}
+   </select>
+   
+   <insert id="reviewInsert">
+      insert into noel_product_review(
+      prd_review_no,
+      prd_no,
+      marketer_id,
+      rating,
+      prd_review_content,
+      user_id)
+      values(
+      prd_review_seq.nextval,
+      '2',
+      'marketer1',
+      #{rating},
+      #{prdReviewcontent},
+      'user1'
+      )
+   </insert>
+   
+   <update id="reviewUpdate" parameterType="marketReviewVO">
+      update noel_product_review
+      set prd_review_content = #{prdReviewcontent}
+      where prd_review_no = #{prdReviewno}
+   </update>
+   
+   <delete id="reviewDelete" parameterType="int">
+      delete
+      from noel_product_review
+      where prd_review_no = #{prdReviewno}
+   </delete>
+   
+   <select id="select" resultType="String">
+      select 
+      prd_qna_content, 
+      user_id, 
+      prd_qna_regdate 
+      from noel_product_qna 
+      where user_id = 'user1'
+   </select>
+   
+   <select id="qnaList" resultType="marketQnaVO">
+      select
+      prd_qna_no as prdQnano,
+      prd_no as prdNo,
+      prd_qna_content as prdQnacontent,
+      prd_qna_status as prdQnastatus,
+      user_id as userId,
+      prd_qna_regdate as prdQnaregdate
+      from noel_product_qna
+      order by prd_qna_regdate desc
+   </select>
+   
+   <select id="qnaDetail" parameterType="int" resultType="marketQnaVO">
+      select
+      prd_qna_no as prdQnano,
+      prd_no as prdNo,
+      marketer_id as marketerId,
+      prd_qna_content as prdQnacontent,
+      user_id as userId
+      from noel_product_qna
+      where prd_qna_no = #{prdQnano}
+   </select>
+
+   <insert id="qnaInsert">
+      insert into noel_product_qna(
+      prd_qna_no, 
+      prd_no, 
+      marketer_id, 
+      prd_qna_content, 
+      user_id)
+      values(
+      prd_qna_seq.nextval, 
+      '2', 
+      'marketer2', 
+      #{prdQnacontent}, 
+      'user2')
+   </insert>
+   
+   <update id="qnaUpdate" parameterType="marketQnaVO">
+      update noel_product_qna
+      set prd_qna_content = #{prdQnacontent}
+      where prd_qna_no = #{prdQnano}
+   </update>
+   
+   <delete id="qnaDelete" parameterType="int">
+      delete
+      from noel_product_qna
+      where prd_qna_no = #{prdQnano}
+   </delete>
+
+</mapper>
