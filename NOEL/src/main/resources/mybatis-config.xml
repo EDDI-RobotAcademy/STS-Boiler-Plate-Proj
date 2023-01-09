@@ -10,6 +10,11 @@
 		<setting name="jdbcTypeForNull" value="NULL" />
 	</settings>
 	
-
+	<typeAliases>
+		<typeAlias type="com.kh.myapp.market.model.vo.ProductVO" alias="productVO"/>
+		<typeAlias type="com.kh.myapp.market.model.vo.ProductImgVO" alias="prdimgVO"/>
+		<typeAlias type="com.kh.myapp.market.model.vo.MarketReviewVO" alias="marketReviewVO"/>
+   	    <typeAlias type="com.kh.myapp.market.model.vo.MarketQnaVO" alias="marketQnaVO"/>
+	</typeAliases>
 </configuration>       
 
